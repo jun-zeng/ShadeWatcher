@@ -1,0 +1,44 @@
+This file shows our database design to store KG
+
+Process Table:
+CREATE TABLE [IF NOT EXISTS] proc (
+	n_id		bigint		primary key,
+	pid 		int			not null,
+	exe			text		not null,
+	ppid		int			not null,
+	args		text		
+);
+
+
+File Table:
+CREATE TABLE [IF NOT EXISTS] file (
+	n_id 		bigint		primary key,
+	name		text		not null,
+	version		int			
+);
+
+
+Socket Table:
+CREATE TABLE [IF NOT EXISTS] socket (
+	n_id		bigint		primary key,
+	name		text		not null
+);
+
+
+Edge Table:
+CREATE TABLE [IF NOT EXISTS] edge (
+	e_id		bigint		primary key,
+	n1_hash		bigint		not null,
+	n2_hash		bigint		not null,
+	relation	int			not null,
+	sequence	bigint		not null,
+	session		int			not null,
+);
+
+
+Node Table
+CREATE TABLE IF NOT EXISTS node (
+	n_id		bigint		primary key,
+	outnode		serial[]	not null,
+	innode	serial[]	not null,
+);
