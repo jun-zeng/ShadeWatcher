@@ -100,10 +100,10 @@ void CmdArgument::ComBeatHelp() {
     std::cout << "  -trace (-t) <str>" << "\t\t\t" << "Specify log data path as <str>" << std::endl;
     std::cout << "  -dataset (-da) <str>" << "\t\t\t" << "Specify encoding dir as <str>: Default as log" << std::endl;
     std::cout << "  -graph (-g)" << "\t\t\t\t" << "Visualize knowledge graph" << std::endl;
-    std::cout << "  -kafka (-k) <str>" << "\t\t\t" << "Define configure file for kafka" << std::endl;
     std::cout << "  -loadfromdb (-ldb) <str>" << "\t\t" << "Load KG from database in <str>"<< std::endl;
     std::cout << "  -loadfile (-lf)" << "\t\t\t" << "Load KG from local file"<< std::endl;
     std::cout << "  -storetodb (-sdb) <str>" << "\t\t" << "Store KG to database in <str>" << std::endl;
+    std::cout << "  -storeentity (-se)" << "\t\t\t" << "Store system entities to local file" << std::endl;
     std::cout << "  -storefile (-sf)" << "\t\t\t" << "Store KG to local file" << std::endl;
     std::cout << "  -delschema (-dsch) <str1> <str2>" << "\t" << "Delete a schema <str1> in a database <str2>" << std::endl;
 
