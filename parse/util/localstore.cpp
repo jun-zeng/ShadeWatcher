@@ -36,7 +36,7 @@ void LocalStore::StoreProc() {
 		std::string args = proc.second->args;
 		procfact_file << id << " " << pid << " " << exe \
 			<< " " << ppid << " " << args << std::endl;
-		nodefact_file << id << std::endl;
+		nodefact_file << id << " " << 1 << std::endl;
 	}
 	procfact_file.close();
 	nodefact_file.close();
@@ -497,7 +497,7 @@ void LocalStore::DumpProcFileSocketEdge2FactSize(int _file_id) {
 
 	// record the number of edges
 	// No edge file is stored
-	if (_file_id == 0) {
+	if (_file_id < 0) {
 		return;
 	}
 

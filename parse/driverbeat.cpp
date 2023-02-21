@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 		infotbl->PrintKG();
 	}
 
+	int file_id = 0;
 	auto beat_dirs = TraverseBeatDir(cfg.auditbeat_data_dir);
 	for (auto beat_dir : beat_dirs) {
 		std::cout << "Processing Dir: " << beat_dir << std::endl;
@@ -36,6 +37,11 @@ int main(int argc, char **argv)
 			// print KG information
 			infotbl->PrintKG();
 
+			if (cfg.storetofile) {
+				ls.KGStoreToFile(file_id);
+				file_id += 1;
+			}
+
 			if (cfg.storeentity) {
 				ls.EntityStoreToFile();
 			}
@@ -47,8 +53,8 @@ int main(int argc, char **argv)
 		neo4jdb.Neo4jVisKG();
 
 	// store system entities locally
-	if (cfg.storeentity)
-		ls.DumpProcFileSocketEdge2FactSize();
+	if (cfg.storeentity || cfg.storetofile)
+		ls.DumpProcFileSocketEdge2FactSize(file_id - 1);
 
 	infotbl->FreeInteraction();
 	infotbl->FreeNode();
