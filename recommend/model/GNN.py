@@ -141,16 +141,16 @@ class GNN(object):
             logger.info('adapting Pre-train results to initialize kg embedding')
 
         logger.info('adapting Xavier to initialize relation embedding')
-        all_weight['rel_embed'] = tf.Variable(initializer([self.n_relation, self.kg_dim]), name='rel_embed')
+        all_weight['rel_embed'] = tf.Variable(initializer([self.n_relation + 1, self.kg_dim]), name='rel_embed')
         
         # transformation matrix for TransR
         logger.info('adapting Xavier to initialize TransR embedding')
-        all_weight['trans_w'] = tf.Variable(initializer([self.n_relation, self.inter_dim, self.kg_dim]), name='trans_w')
+        all_weight['trans_w'] = tf.Variable(initializer([self.n_relation + 1, self.inter_dim, self.kg_dim]), name='trans_w')
         
         # hyperplane matrix for TransH
         if embedding_type == 'transh':
             logger.info('adapting Xavier to initialize transH embedding')
-            all_weight['trans_h'] = tf.Variable(initializer([self.n_relation, self.kg_dim]), name='trans_h')
+            all_weight['trans_h'] = tf.Variable(initializer([self.n_relation + 1, self.kg_dim]), name='trans_h')
 
         weight_size_list = [self.inter_dim] + self.weight_size
 
